@@ -46,6 +46,10 @@ class EntryField(BaseModel):
             self.open_sum = '*'
             self.close_sum = '*'
             super(EntryField, self).save(*args, **kwargs)
+        elif self.close == "***":
+            self.close_sum = '*'
+            super(EntryField, self).save(*args, **kwargs)
+
         try:
             if self.open is not None:
                 self.open_sum = get_last_number(self.open)
